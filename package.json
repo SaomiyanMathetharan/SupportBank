@@ -15,5 +15,11 @@
     "url": "https://github.com/SaomiyanMathetharan/SupportBank/issues"
   },
   "homepage": "https://github.com/SaomiyanMathetharan/SupportBank#readme",
-  "description": ""
+  "description": "",
+  "dependencies": {
+    "csv-parser": "^3.0.0",
+    "moment": "^2.29.3",
+    "readline-sync": "^1.4.10"
+  },
+  "type": "module"
 }
