@@ -16,10 +16,11 @@ export default class Account {
     get balance() {
         const moneyOut = this.fromTransactions.reduce(this.sumBalance, 0);
         const moneyIn = this.toTransactions.reduce(this.sumBalance, 0);
-        return moneyOut - moneyIn;
+        return Math.round(moneyOut * 100 - moneyIn * 100) / 100;
     }
 
     sumBalance(balanceSoFar, transaction) {
-        return balanceSoFar + transaction.amount;
+        const balance = Math.round(balanceSoFar * 100 + transaction.amount * 100) / 100
+        return balance;
     }
 }

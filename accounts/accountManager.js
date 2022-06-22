@@ -6,16 +6,24 @@ export default class AccountManager {
     }
 
     addTransaction(transaction) {
-        const from = transaction.from;
-        const fromAccount = this.accounts[from] || (this.accounts[from] = new account(from));
+        const fromAccount = this.getAccountOrAdd(transaction.from);
         fromAccount.addFromTransaction(transaction);
 
-        const to = transaction.to;
-        const toAccount = this.accounts[to] || (this.accounts[to] = new account(to));
+        const toAccount = this.getAccountOrAdd(transaction.to);
         toAccount.addToTransaction(transaction);
     }
 
     addTransactions(transactionList) {
-        transactionList.forEach(this.addTransaction);
+        //transactionList.forEach(this.addTransaction);
+        for (const t of transactionList) {
+            this.addTransaction(t);
+        }
+    }
+
+    getAccountOrAdd(name) {
+        if(!this.accounts[name]) {
+            this.accounts[name] = new account(name);
+        }
+        return this.accounts[name];
     }
 }

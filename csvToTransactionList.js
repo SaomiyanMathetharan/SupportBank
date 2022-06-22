@@ -16,7 +16,7 @@ export default function getTransactionList() {
                 const from = data.From;
                 const to = data.To;
                 const narrative = data.Narrative;
-                const amount = data.Amount;
+                const amount = parseFloat(data.Amount);
                 transactions.push(new transaction(date, from, to, narrative, amount));
             }
         )
