@@ -5,6 +5,10 @@ export default class AccountManager {
         this.accounts = {};
     }
 
+    getAccount(name) {
+        return this.accounts[name];
+    }
+
     addTransaction(transaction) {
         const fromAccount = this.getAccountOrAdd(transaction.from);
         fromAccount.addFromTransaction(transaction);

@@ -12,12 +12,23 @@ getTransactionList().then(transactionList => {
     const command = getCommand();
 
     // deal with input
-    if (command === "list all") {
-        const accounts = accountManager.accounts;
-        for (const [key, account] of Object.entries(accounts)) {
-            console.log('Name: ' + account.name);
-            console.log('Amount owed:' + account.balance);
-        }
+    switch (command){
+        case "list all":
+            const accounts = accountManager.accounts;
+            for (const [key, account] of Object.entries(accounts)) {
+                console.log('Name: ' + account.name);
+                console.log('Amount owed:' + account.balance);
+            }
+            break;
+        default:
+            const name = command;
+            const acc = accountManager.getAccount(name);
+            if (acc === undefined) {
+                console.log("Error: account not found. Please try again");
+            } else {
+                acc.printTransactions();
+            }
+
     }
 });
 

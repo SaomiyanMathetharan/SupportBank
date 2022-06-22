@@ -23,4 +23,16 @@ export default class Account {
         const balance = Math.round(balanceSoFar * 100 + transaction.amount * 100) / 100
         return balance;
     }
+
+    printTransactions() {
+        console.log("\nTransactions from " + this.name)
+        for (const ftrans of this.fromTransactions) {
+            ftrans.printTransaction()
+        }
+
+        console.log("\nTransactions to " + this.name)
+        for (const ttrans of this.toTransactions) {
+            ttrans.printTransaction()
+        }
+    }
 }

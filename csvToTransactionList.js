@@ -12,16 +12,16 @@ export default function getTransactionList() {
     createReadStream(filePath)
         .pipe(csvParser())
         .on("data", (data) => {
-                const date = moment(data.Date, "DD/MM/YY");
+                const date = data.Date;
                 const from = data.From;
                 const to = data.To;
                 const narrative = data.Narrative;
-                const amount = parseFloat(data.Amount);
+                const amount = data.Amount;
                 transactions.push(new transaction(date, from, to, narrative, amount));
             }
         )
         .on("end", () => {
-            resolve(transactions)
+            resolve(transactions);
         });
     });
 }

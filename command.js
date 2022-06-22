@@ -15,7 +15,7 @@ function askCommand() {
         'Positive balance indicates money they owe, negative indicates money they are owed.');
     console.log('"list < name >" - prints a list of every transaction, with the date and narrative, ' +
         'for that account under < name >')
-    return question('What would you like to do?\n').trim().toLowerCase();
+    return question('What would you like to do?\n').trim();
 }
 
 function parseCommand(command) {
