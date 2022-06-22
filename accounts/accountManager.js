@@ -18,7 +18,6 @@ export default class AccountManager {
     }
 
     addTransactions(transactionList) {
-        //transactionList.forEach(this.addTransaction);
         for (const t of transactionList) {
             this.addTransaction(t);
         }
